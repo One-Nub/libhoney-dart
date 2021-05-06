@@ -1,8 +1,10 @@
 part of '../libhoney-dart.dart';
 
-class Libhoney {
-  static const _honeycombHost = "https://api.honeycomb.io";
+const _apiHost = "https://api.honeycomb.io";
+const _eventEndpoint = "/1/events/";
+const _version = "0.1.0";
 
+class Libhoney {
   String apiHost;
   String? dataset;
   String? writeKey;
@@ -10,7 +12,7 @@ class Libhoney {
 
   Map _globalFields = {};
   
-  Libhoney({this.apiHost = _honeycombHost, dataset, writeKey, this.sampleRate = 1});
+  Libhoney({this.apiHost = _apiHost, dataset, writeKey, this.sampleRate = 1});
 
   Future<void> sendEvent(Event event) async {
     //TODO: Validate event contents via method
