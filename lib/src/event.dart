@@ -17,15 +17,15 @@ class Event {
       this.sampleRate,
       this.timestamp,
       Map? fields}) {
-    if (apiHost == null) apiHost = _libhoney.apiHost;
+    apiHost ??= _libhoney.apiHost;
 
-    if (dataset == null) dataset = _libhoney.dataset;
+    dataset ??= _libhoney.dataset;
 
-    if (writeKey == null) writeKey = _libhoney.writeKey;
+    writeKey ??= _libhoney.writeKey;
 
-    if (sampleRate == null) sampleRate = _libhoney.sampleRate;
+    sampleRate ??= _libhoney.sampleRate;
 
-    if (timestamp == null) timestamp = DateTime.now();
+    timestamp ??= DateTime.now();
 
     if (fields == null) {
       //Assigns fields to global (since global is empty by default)
