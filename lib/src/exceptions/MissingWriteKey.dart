@@ -1,5 +1,6 @@
 part of "../../libhoney-dart.dart";
 
+/// Thrown when sending an event with no defined [Event.writeKey].
 class MissingWriteKey implements Exception {
   String cause;
 
