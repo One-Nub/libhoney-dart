@@ -1,6 +1,6 @@
-/// Client library for honeycomb.io for Dart
+/// Client library for https://honeycomb.io for Dart
 /// 
-/// Main library which contains all necessary things to interact with honeycomb.io
+/// Main library which contains all necessary things to interact with https://honeycomb.io
 library libhoney;
 
 import 'dart:convert' show json;

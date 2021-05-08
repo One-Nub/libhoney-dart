@@ -12,7 +12,7 @@ const _version = "0.1.0";
 /// Entry point of package for setting send defaults and sending [Event]s.
 ///
 /// Allows for setting of non default [apiHost], along with user specific options
-/// such as a [dataset] name and [writeKey] which must be set for proper event sending.
+/// such as a [dataset] name and [writeKey] - which must be set for proper event sending.
 /// [sampleRate] enables the sending of events based off of a 1 / [sampleRate] chance.
 /// Sending is enabled by default but can be disabled via the [disabled] option.
 class Libhoney {
