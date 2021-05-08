@@ -28,7 +28,7 @@ class Libhoney {
 
   /// Known to Honeycomb as an API key. Keep this a secret.
   ///
-  /// Required on Libhoney or on an [Event] or else [MissingWritekey] will be thrown.
+  /// Required on Libhoney or on an [Event] or else [MissingWriteKey] will be thrown.
   String? writeKey;
 
   /// The default sampling rate. Chance of an event being sent is 1 / [sampleRate].
@@ -88,7 +88,7 @@ class Libhoney {
 
     if (event.dataset == null || event.dataset!.isEmpty) throw MissingDatasetName();
 
-    if (event.writeKey == null || event.writeKey!.isEmpty) throw MissingWritekey();
+    if (event.writeKey == null || event.writeKey!.isEmpty) throw MissingWriteKey();
 
     validatedEvent.sampleRate ??= 1;
 

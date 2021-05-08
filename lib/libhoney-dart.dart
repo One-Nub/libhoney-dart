@@ -15,4 +15,4 @@ part 'src/transmission.dart';
 part "src/exceptions/MissingApiHost.dart";
 part "src/exceptions/MissingData.dart";
 part "src/exceptions/MissingDatasetName.dart";
-part "src/exceptions/MissingWritekey.dart";
+part "src/exceptions/MissingWriteKey.dart";
