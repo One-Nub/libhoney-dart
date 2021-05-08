@@ -45,7 +45,7 @@ class Libhoney {
   Transmission? _transmission;
 
   /// Contains fields set globally which will be given to all events.
-  Map _globalFields = {};
+  Map<String, dynamic> _globalFields = {};
 
   /// Creates a new Libhoney client.
   Libhoney(
@@ -73,7 +73,7 @@ class Libhoney {
   }
 
   /// Sets a field globally for all further events to inherit when being sent.
-  void addGlobalField(String key, Object val) {
+  void addGlobalField(String key, dynamic val) {
     _globalFields[key] = val;
   }
 

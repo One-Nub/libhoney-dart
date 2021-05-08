@@ -29,7 +29,7 @@ class Event {
   /// The fields that the event holds.
   ///
   /// Will be defined to [Libhoney._globalFields] if not set upon event creation.
-  late Map _fields;
+  late Map<String, dynamic> _fields;
 
   /// Creates an Event.
   Event(this._libhoney,
@@ -38,7 +38,7 @@ class Event {
       this.writeKey,
       this.sampleRate,
       this.timestamp,
-      Map? fields}) {
+      Map<String, dynamic>? fields}) {
     apiHost ??= _libhoney.apiHost;
 
     dataset ??= _libhoney.dataset;
