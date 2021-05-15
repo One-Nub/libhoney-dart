@@ -8,7 +8,12 @@ const _contentType = "application/json";
 
 /// Manages all sending of [Event]s.
 class Transmission {
-  /// Creates new Transmisson handler.
+  /// Http client which events are sent through.
+  /// Can be defined when instantiating [Libhoney] class
+  /// enabling use of custom Http client implementation.
+  Client client = Client();
+
+  /// Creates new Transmission handler.
   Transmission();
 
   /// Sends an event.
@@ -21,7 +26,7 @@ class Transmission {
     Uri url = Uri.parse("${event.apiHost!}$_eventEndpoint/${event.dataset}");
     var headers = _generateHeaders(event);
 
-    http.Response resp = await http.post(url, headers: headers, body: json.encode(event._fields));
+    Response resp = await client.post(url, headers: headers, body: json.encode(event._fields));
 
     // TODO: Log the response with the logging package
     // (?) Until responses are implemented. Or integrate a toggle for print logging.

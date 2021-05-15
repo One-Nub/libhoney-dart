@@ -48,13 +48,21 @@ class Libhoney {
   Map<String, dynamic> _globalFields = {};
 
   /// Creates a new Libhoney client.
+  ///
+  /// [httpClient] presents the opportunity to set the Client that [Transmission]
+  /// will use, enabling testing or custom Client implementations.
   Libhoney(
       {this.apiHost = _apiHost,
-      dataset,
-      writeKey,
+      this.dataset,
+      this.writeKey,
       this.sampleRate = 1,
-      this.disabled = false}) {
+      this.disabled = false,
+      Client? httpClient}) {
     if (!disabled) _transmission = Transmission();
+
+    if(httpClient != null && !disabled) {
+      _transmission!.client = httpClient;
+    }
   }
 
   /// Sends a specific [Event] to internal [Transmission].
