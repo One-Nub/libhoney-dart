@@ -29,7 +29,7 @@ class Event {
   /// The fields that the event holds.
   ///
   /// Will be defined to [Libhoney._globalFields] if not set upon event creation.
-  late Map<String, dynamic> _fields;
+  Map<String, dynamic> _fields = {};
 
   /// Creates an Event.
   Event(this._libhoney,
@@ -49,15 +49,14 @@ class Event {
 
     timestamp ??= DateTime.now();
 
-    if (fields == null) {
-      // Assigns fields to global (since global is empty by default)
-      _fields = _libhoney._globalFields;
+    if (fields == null && _libhoney._globalFields.isNotEmpty) {
+      _fields.addAll(_libhoney._globalFields);
     }
     else {
-      // Combines global and parameter fields.
+      // Combines global and parameter fields, empty map if both null
       _fields = {
         ..._libhoney._globalFields,
-        ...fields
+        ...?fields
       };
     }
   }
