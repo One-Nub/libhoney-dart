@@ -85,6 +85,11 @@ class Libhoney {
     _globalFields[key] = val;
   }
 
+  /// Get a Map of all the set global fields that events will inherit.
+  Map<String, dynamic> getGlobalFields() {
+    return _globalFields;
+  }
+
   /// Internal validation logic.
   ///
   /// Follows the schema for exceptions being thrown as defined in the documentation
