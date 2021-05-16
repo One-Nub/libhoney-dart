@@ -16,7 +16,7 @@ const _version = "0.1.0";
 /// [sampleRate] enables the sending of events based off of a 1 / [sampleRate] chance.
 /// Sending is enabled by default but can be disabled via the [disabled] option.
 class Libhoney {
-  /// The default host where events are sent to.
+  /// The default host where events are sent to. Must be URI parsable
   ///
   /// Events will be sent to "/1/events/" on this host.
   String apiHost;
@@ -26,7 +26,7 @@ class Libhoney {
   /// Must be set in Libhoney or on an [Event] or else [MissingDatasetName] will be thrown.
   String? dataset;
 
-  /// Known to Honeycomb as an API key. Keep this a secret.
+  /// API key for Honeycomb.io. Keep this a secret.
   ///
   /// Required on Libhoney or on an [Event] or else [MissingWriteKey] will be thrown.
   String? writeKey;
@@ -50,7 +50,9 @@ class Libhoney {
   /// Creates a new Libhoney client.
   ///
   /// [httpClient] presents the opportunity to set the Client that [Transmission]
-  /// will use, enabling testing or custom Client implementations.
+  /// will use, enabling testing or custom Client implementations. For events to
+  /// be sent without an error, [dataset] and [writeKey] MUST be assigned. According
+  /// to the SDK spec these can be null by default.
   Libhoney(
       {this.apiHost = _apiHost,
       this.dataset,
@@ -68,11 +70,12 @@ class Libhoney {
   /// Sends a specific [Event] to internal [Transmission].
   ///
   /// Validates an [Event]'s required arguments.
-  /// Will throw [MissingApiHost] if an Event's [Event.apiHost] is null or empty.
-  /// Will throw [MissingDatasetName] if an Event's [Event.dataset] is null or empty.
-  /// Will throw [MissingWriteKey] if an Event's [Event.writeKey] is null or empty.
-  /// Defines a default sample rate of 1 and a timestamp of the current time if they
-  /// are not predefined. If there is no event data [MissingData] will be thrown.
+  /// Throws [MissingApiHost] when [Event.apiHost] is null or empty.
+  /// Throws [MissingDatasetName] when [Event.dataset] is null or empty.
+  /// Throws [MissingWriteKey] when [Event.writeKey] is null or empty.
+  /// A default sample rate of `1` and a timestamp of the current time will be
+  /// defined if they are not predefined. If there is no event
+  /// data [MissingData] will be thrown.
   Future<void> sendEvent(Event event) async {
     Event validatedEvent = _validateEvent(event);
     if(_transmission != null) {
