@@ -63,8 +63,13 @@ class Event {
   }
 
   /// Adds a field to the Event.
-  addField(String key, Object val) {
+  void addField(String key, Object val) {
     _fields[key] = val;
+  }
+
+  /// Get all fields this Event holds.
+  Map<String, dynamic> getFields() {
+    return _fields;
   }
 
   /// Sends this event. Equivalent to [Libhoney.sendEvent()].
