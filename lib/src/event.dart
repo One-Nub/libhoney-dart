@@ -72,7 +72,7 @@ class Event {
   }
 
   /// Sends this event. Equivalent to [Libhoney.sendEvent()].
-  send() {
-    _libhoney.sendEvent(this);
+  Future<void> send() async {
+    await _libhoney.sendEvent(this);
   }
 }
