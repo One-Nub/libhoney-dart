@@ -23,7 +23,8 @@ class Event {
 
   /// The time that the event was occurred at.
   ///
-  /// Will be set to the time the event was instantiated if not passed in Event constructor.
+  /// If there is no time set, the event will be set to the current time
+  /// when it is sent.
   DateTime? timestamp;
 
   /// The fields that the event holds.
@@ -50,8 +51,6 @@ class Event {
     writeKey ??= _libhoney.writeKey;
 
     sampleRate ??= _libhoney.sampleRate;
-
-    timestamp ??= DateTime.now();
 
     if (fields == null && _libhoney._globalFields.isNotEmpty) {
       _fields.addAll(_libhoney._globalFields);
