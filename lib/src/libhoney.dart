@@ -101,7 +101,7 @@ class Libhoney {
   Future<void> sendEvent(Event event, {bool presampled: false}) async {
     Event validatedEvent = _validateEvent(event);
     if(_transmission != null) {
-      _transmission!.send(validatedEvent, presampled: presampled);
+      await _transmission!.send(validatedEvent, presampled: presampled);
     }
   }
 
