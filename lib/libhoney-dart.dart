@@ -3,6 +3,7 @@
 /// Main library which contains all necessary things to interact with https://honeycomb.io
 library libhoney;
 
+import 'dart:collection';
 import 'dart:convert' show json;
 import 'dart:math';
 
@@ -11,6 +12,7 @@ import 'package:http/http.dart';
 part 'src/libhoney.dart';
 part 'src/event.dart';
 part 'src/transmission.dart';
+part 'src/event_response.dart';
 
 part "src/exceptions/MissingApiHost.dart";
 part "src/exceptions/MissingData.dart";

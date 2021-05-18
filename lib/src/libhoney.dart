@@ -47,20 +47,41 @@ class Libhoney {
   /// Contains fields set globally which will be given to all events.
   Map<String, dynamic> _globalFields = {};
 
+  /// Maximum size of the response queue.
+  int maxResponseQueueSize;
+
+  /// Queue of responses from sent events.
+  ///
+  /// Will increase up to [maxResponseQueueSize] where new responses
+  /// will be dropped.
+  Queue<EventResponse> responseQueue = Queue();
+
+  /// Adds a response to the response queue.
+  void _addResponse(EventResponse eventResponse) {
+    if(responseQueue.length < maxResponseQueueSize) {
+      responseQueue.add(eventResponse);
+    }
+  }
+
   /// Creates a new Libhoney client.
   ///
   /// [httpClient] presents the opportunity to set the Client that [Transmission]
   /// will use, enabling testing or custom Client implementations. For events to
   /// be sent without an error, [dataset] and [writeKey] MUST be assigned. According
-  /// to the SDK spec these can be null by default.
+  /// to the SDK spec these can be null by default. [maxResponseQueueSize] is
+  /// the maximum size of the response queue, and [disableResponseQueue] will
+  /// disable the queueing of responses altogether.
   Libhoney(
       {this.apiHost = _apiHost,
       this.dataset,
       this.writeKey,
       this.sampleRate = 1,
       this.disabled = false,
+      this.maxResponseQueueSize = 1000,
+      bool disableResponseQueue = false,
       Client? httpClient}) {
     if (!disabled) _transmission = Transmission();
+    if (disableResponseQueue) maxResponseQueueSize = 0;
 
     if(httpClient != null && !disabled) {
       _transmission!.client = httpClient;

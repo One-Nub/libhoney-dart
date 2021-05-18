@@ -26,11 +26,12 @@ class Transmission {
     Uri url = Uri.parse("${event.apiHost!}$_eventEndpoint/${event.dataset}");
     var headers = _generateHeaders(event);
 
-    Response resp = await client.post(url, headers: headers, body: json.encode(event._fields));
+    Stopwatch timer = Stopwatch()..start();
+    Response postResponse = await client.post(url, headers: headers, body: json.encode(event._fields));
+    timer.stop();
 
-    // TODO: Log the response with the logging package
-    // (?) Until responses are implemented. Or integrate a toggle for print logging.
-    print(resp);
+    EventResponse eventResponse = EventResponse(postResponse, event, timer.elapsedMilliseconds);
+    event._libhoney._addResponse(eventResponse);
   }
 
   /// Performs sampling on an event.

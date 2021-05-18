@@ -31,6 +31,9 @@ class Event {
   /// Will be defined to [Libhoney._globalFields] if not set upon event creation.
   Map<String, dynamic> _fields = {};
 
+  /// Metadata used to identify event in [EventResponse] queue.
+  dynamic? metadata;
+
   /// Creates an Event.
   Event(this._libhoney,
       {this.apiHost,
@@ -38,6 +41,7 @@ class Event {
       this.writeKey,
       this.sampleRate,
       this.timestamp,
+      this.metadata,
       Map<String, dynamic>? fields}) {
     apiHost ??= _libhoney.apiHost;
 
