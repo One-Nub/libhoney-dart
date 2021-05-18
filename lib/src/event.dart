@@ -79,4 +79,9 @@ class Event {
   Future<void> send() async {
     await _libhoney.sendEvent(this);
   }
+
+  /// Sends this event without performing sampling internally.
+  Future<void> sendPresampled() async {
+    await _libhoney.sendEvent(this, presampled: true);
+  }
 }

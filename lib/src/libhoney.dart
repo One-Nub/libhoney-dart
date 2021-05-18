@@ -96,11 +96,12 @@ class Libhoney {
   /// Throws [MissingWriteKey] when [Event.writeKey] is null or empty.
   /// A default sample rate of `1` and a timestamp of the current time will be
   /// defined if they are not predefined. If there is no event
-  /// data [MissingData] will be thrown.
-  Future<void> sendEvent(Event event) async {
+  /// data [MissingData] will be thrown. Sampling will not be performed
+  /// internally if [presampled] is true.
+  Future<void> sendEvent(Event event, {bool presampled: false}) async {
     Event validatedEvent = _validateEvent(event);
     if(_transmission != null) {
-      _transmission!.send(validatedEvent);
+      _transmission!.send(validatedEvent, presampled: presampled);
     }
   }
 

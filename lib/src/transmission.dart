@@ -19,9 +19,11 @@ class Transmission {
   /// Sends an event.
   ///
   /// Requires an [event] to send. Utilizes values set on the event to then send upstream.
-  Future<void> send(Event event) async {
+  /// Sampling will not be performed on the event if it is [presampled], but is 
+  /// not required is the sample rate is already `1`.
+  Future<void> send(Event event, {bool presampled: false}) async {
     //Stop if event is not to be sent
-    if(!_sampleEvent(event.sampleRate!)) return;
+    if(!presampled && !_sampleEvent(event.sampleRate!)) return;
 
     Uri url = Uri.parse("${event.apiHost!}$_eventEndpoint/${event.dataset}");
     var headers = _generateHeaders(event);
