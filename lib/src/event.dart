@@ -1,4 +1,4 @@
-part of '../libhoney-dart.dart';
+part of '../libhoney_dart.dart';
 
 /// Event to be sent to the upstream [apiHost].
 class Event {

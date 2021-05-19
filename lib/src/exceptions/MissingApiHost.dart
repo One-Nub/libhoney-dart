@@ -1,4 +1,4 @@
-part of "../../libhoney-dart.dart";
+part of '../../libhoney_dart.dart';
 
 /// Thrown when sending an event with no defined [Event.apiHost].
 class MissingApiHost implements Exception {

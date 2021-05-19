@@ -1,4 +1,4 @@
-part of '../libhoney-dart.dart';
+part of '../libhoney_dart.dart';
 
 /// Default Honeycomb api host URL.
 const _apiHost = "https://api.honeycomb.io";

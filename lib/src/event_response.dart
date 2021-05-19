@@ -1,4 +1,4 @@
-part of '../libhoney-dart.dart';
+part of '../libhoney_dart.dart';
 
 class EventResponse {
   /// Response body of the request.

@@ -1,4 +1,4 @@
-part of '../libhoney-dart.dart';
+part of '../libhoney_dart.dart';
 
 /// Useragent for the library.
 const _userAgent = "libhoney-dart/$_version";
