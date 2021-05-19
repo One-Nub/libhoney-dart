@@ -25,7 +25,7 @@ class Transmission {
     //Stop if event is not to be sent
     if(!presampled && !_sampleEvent(event.sampleRate!)) return;
 
-    Uri url = Uri.parse("${event.apiHost!}$_eventEndpoint/${event.dataset}");
+    Uri url = Uri.parse("${event.apiHost!}$_eventEndpoint${event.dataset}");
     var headers = _generateHeaders(event);
 
     Stopwatch timer = Stopwatch()..start();
