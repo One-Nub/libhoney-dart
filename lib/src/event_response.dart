@@ -14,7 +14,7 @@ class EventResponse {
   String? libError;
 
   /// [Event.metadata], used to identify the event.
-  dynamic? metadata;
+  dynamic metadata;
 
   /// Raw response from post request sent upstream.
   Response rawResponse;
