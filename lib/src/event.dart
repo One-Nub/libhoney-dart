@@ -33,7 +33,7 @@ class Event {
   Map<String, dynamic> _fields = {};
 
   /// Metadata used to identify event in [EventResponse] queue.
-  dynamic? metadata;
+  dynamic metadata;
 
   /// Creates an Event.
   Event(this._libhoney,
