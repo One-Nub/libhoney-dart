@@ -69,6 +69,11 @@ class Event {
     _fields[key] = val;
   }
 
+  /// Adds a map of values to the Event fields.
+  void addMap(Map<String, dynamic> newVals) {
+    _fields.addAll(newVals);
+  }
+
   /// Get all fields this Event holds.
   Map<String, dynamic> getFields() {
     return _fields;

@@ -40,6 +40,10 @@ void main() {
     fields: {"a" : "b"});
 
   testEvent.addField("x", "y");
+  testEvent.addMap({
+    "x" : "z",
+    "bool" : false
+  });
 
   // Tests that event values is set correctly and that it does not match
   // Libhoney properties.
@@ -72,7 +76,8 @@ void main() {
       Map<String, dynamic> correctFields = {
         "global-key" : "global-val",
         "a" : "b",
-        "x" : "y"
+        "x" : "z",
+        "bool" : false
       };
 
       expect(testEvent.getFields(), equals(correctFields));
