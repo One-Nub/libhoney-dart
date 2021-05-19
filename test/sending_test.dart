@@ -37,7 +37,7 @@ void main() {
     });
   });
 
-  group("Sending event.", () {
+  group("Sending event with mock client.", () {
     MockClient mockClient = MockClient((request) async {
       return Response(request.body, 200, headers: request.headers);
     });
