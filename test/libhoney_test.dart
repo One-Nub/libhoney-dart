@@ -1,5 +1,4 @@
-import '../lib/libhoney-dart.dart';
-
+import 'package:libhoney_dart/libhoney_dart.dart';
 import 'package:test/test.dart';
 
 void main() {

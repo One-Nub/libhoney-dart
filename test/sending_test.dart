@@ -1,8 +1,7 @@
-import '../lib/libhoney-dart.dart';
-
 import 'dart:collection';
 import 'dart:convert' show json;
 
+import 'package:libhoney_dart/libhoney_dart.dart';
 import 'package:http/http.dart';
 import 'package:http/testing.dart';
 import 'package:test/test.dart';
