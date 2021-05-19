@@ -8,7 +8,7 @@ class EventResponse {
   Event event;
 
   /// Error that the library encountered while sending the event.
-  /// 
+  ///
   /// Currently unused, if the currently thrown exceptions are phased out
   /// upon validating, this will be populated.
   String? libError;

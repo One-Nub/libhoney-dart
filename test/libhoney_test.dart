@@ -3,7 +3,6 @@ import '../lib/libhoney-dart.dart';
 import 'package:test/test.dart';
 
 void main() {
-  
   group("Default instance variables.", () {
     Libhoney honey = Libhoney();
     test("Default apiHost is equal to library constant", () {
@@ -28,11 +27,8 @@ void main() {
   });
 
   group("Custom instance variables.", () {
-    Libhoney honey = Libhoney(apiHost: "https://example.com",
-    dataset: "dataset_1",
-    writeKey: "TOKEN",
-    sampleRate: 2,
-    disabled: true);
+    Libhoney honey = Libhoney(
+        apiHost: "https://example.com", dataset: "dataset_1", writeKey: "TOKEN", sampleRate: 2, disabled: true);
     test("apiHost is equal to parameter", () {
       expect(honey.apiHost, equals("https://example.com"));
     });

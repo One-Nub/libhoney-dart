@@ -18,7 +18,6 @@ void main() {
       event.apiHost = honey.apiHost;
     });
 
-
     test("Missing or empty dataset", () async {
       expect(event.send(), throwsA(isA<MissingDatasetName>()));
       expect(event.sendPresampled(), throwsA(isA<MissingDatasetName>()));
@@ -42,16 +41,9 @@ void main() {
       return Response(request.body, 200, headers: request.headers);
     });
 
-    Map<String, dynamic> fields = {
-      "key" : "value",
-      "number" : 5234,
-      "bool" : false
-    };
+    Map<String, dynamic> fields = {"key": "value", "number": 5234, "bool": false};
 
-    Libhoney honey = Libhoney(httpClient: mockClient,
-        dataset: "testing",
-        writeKey: "TOKEN",
-        sampleRate: 2);
+    Libhoney honey = Libhoney(httpClient: mockClient, dataset: "testing", writeKey: "TOKEN", sampleRate: 2);
     Queue responseQueue = honey.responseQueue;
 
     test("Send with inheritance", () async {
@@ -59,7 +51,7 @@ void main() {
       await event.sendPresampled();
 
       expect(responseQueue.length, equals(1));
-      if(responseQueue.length == 1) {
+      if (responseQueue.length == 1) {
         EventResponse er = responseQueue.removeFirst();
         expect(er.body, equals(json.encode(event.getFields())));
         expect(er.metadata, equals(event.metadata));
@@ -73,12 +65,17 @@ void main() {
     });
 
     test("Send with event overrides", () async {
-      Event event = Event(honey, apiHost: "https://example.com", dataset: "cookieset",
-        writeKey: "DEV_TOKEN", sampleRate: 5, metadata: "eventTwo", fields: fields);
+      Event event = Event(honey,
+          apiHost: "https://example.com",
+          dataset: "cookieset",
+          writeKey: "DEV_TOKEN",
+          sampleRate: 5,
+          metadata: "eventTwo",
+          fields: fields);
       await event.sendPresampled();
 
       expect(responseQueue.length, equals(1));
-      if(responseQueue.length == 1) {
+      if (responseQueue.length == 1) {
         EventResponse er = responseQueue.removeFirst();
         expect(er.body, equals(json.encode(event.getFields())));
         expect(er.metadata, equals(event.metadata));

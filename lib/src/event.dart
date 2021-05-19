@@ -54,13 +54,9 @@ class Event {
 
     if (fields == null && _libhoney._globalFields.isNotEmpty) {
       _fields.addAll(_libhoney._globalFields);
-    }
-    else {
+    } else {
       // Combines global and parameter fields, empty map if both null
-      _fields = {
-        ..._libhoney._globalFields,
-        ...?fields
-      };
+      _fields = {..._libhoney._globalFields, ...?fields};
     }
   }
 

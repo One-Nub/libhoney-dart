@@ -58,7 +58,7 @@ class Libhoney {
 
   /// Adds a response to the response queue.
   void _addResponse(EventResponse eventResponse) {
-    if(responseQueue.length < maxResponseQueueSize) {
+    if (responseQueue.length < maxResponseQueueSize) {
       responseQueue.add(eventResponse);
     }
   }
@@ -83,7 +83,7 @@ class Libhoney {
     if (!disabled) _transmission = Transmission();
     if (disableResponseQueue) maxResponseQueueSize = 0;
 
-    if(httpClient != null && !disabled) {
+    if (httpClient != null && !disabled) {
       _transmission!.client = httpClient;
     }
   }
@@ -100,7 +100,7 @@ class Libhoney {
   /// internally if [presampled] is true.
   Future<void> sendEvent(Event event, {bool presampled: false}) async {
     Event validatedEvent = _validateEvent(event);
-    if(_transmission != null) {
+    if (_transmission != null) {
       await _transmission!.send(validatedEvent, presampled: presampled);
     }
   }
